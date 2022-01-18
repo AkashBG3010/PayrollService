@@ -1,6 +1,7 @@
 package com.bridgelabz;
 
-import java.util.Arrays; 
+import java.util.Arrays;
+import org.junit.Assert;
 import org.junit.Test;
 import com.bridgelabz.EmployeePayrollService.IOService;
 
@@ -16,5 +17,9 @@ public class EmployeePayrollServiceTest {
 		EmployeePayrollService employeePayrollService;
 		employeePayrollService = new EmployeePayrollService(Arrays.asList(arrayOfEmployees));
 		employeePayrollService.writeEmployeePayrollData(IOService.FILE_IO);
+		
+		employeePayrollService.printData(IOService.FILE_IO);
+		long entries = employeePayrollService.countEntries(IOService.FILE_IO);
+		Assert.assertEquals(3, entries);
 	}
 }
